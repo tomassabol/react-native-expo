@@ -29,6 +29,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: "#1F104A",
     },
   },
+  // TODO: Add your EAS build configuration here
   // extra: {
   //   eas: {
   //     projectId: "your-eas-project-id",

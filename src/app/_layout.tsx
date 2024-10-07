@@ -6,10 +6,16 @@ import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
 
 import { ReactQueryProvider } from "~/providers/query-provider";
+import { View } from "react-native";
+import { cn } from "~/lib/utils";
 
 // This is the main layout of the app
 // It wraps your pages with the providers they need
-export default function RootLayout() {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const { colorScheme } = useColorScheme();
   return (
     <ReactQueryProvider>
@@ -20,13 +26,14 @@ export default function RootLayout() {
       <Stack
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#f472b6",
+            backgroundColor: colorScheme == "dark" ? "#171717" : "#F8FAFC",
           },
           contentStyle: {
             backgroundColor: colorScheme == "dark" ? "#09090B" : "#FFFFFF",
           },
         }}
       />
+      <View className={cn({ dark: colorScheme === "dark" })}>{children}</View>
       <StatusBar />
     </ReactQueryProvider>
   );
