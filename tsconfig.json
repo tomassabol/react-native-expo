@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "jsx": "react-native",
+    "types": [
+      "nativewind/types",
+      "@types/node",
+      "@types/react",
+      "@types/react-native",
+      "@types/react-dom"
+    ],
+    "checkJs": false,
+    "moduleSuffixes": [".ios", ".android", ".native", ""],
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "noEmit": true
+  },
+  "include": [
+    "src",
+    "*.ts",
+    "*.js",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "nativewind-env.d.ts"
+  ],
+  "exclude": ["node_modules", "build", "dist", ".next", ".expo"],
+  "extends": "expo/tsconfig.base"
+}
