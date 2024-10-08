@@ -1,5 +1,6 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
+  ignorePatterns: [".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: true,
@@ -61,7 +62,6 @@ const config = {
         message:
           "Use `import { env } from '~/env'` instead to ensure validated types.",
       },
-      ["./src/env.ts"],
     ],
     "no-restricted-imports": [
       "error",
@@ -71,11 +71,19 @@ const config = {
         message:
           "Use `import { env } from '~/env'` instead to ensure validated types.",
       },
-      ["./src/env.ts"],
     ],
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
   },
+  overrides: [
+    {
+      files: ["env.ts"],
+      rules: {
+        "no-restricted-imports": "off",
+        "no-restricted-properties": "off",
+      },
+    },
+  ],
 };
 
 module.exports = config;

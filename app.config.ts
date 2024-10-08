@@ -1,12 +1,12 @@
 import type { ConfigContext, ExpoConfig } from "expo/config";
 import { getPackageJson } from "expo/config";
 
-
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: "expo-app",
   slug: "expo-app",
   scheme: "expo-app",
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- safe
   version: getPackageJson(__dirname).version,
   orientation: "portrait",
   icon: "./assets/icon.png",
@@ -33,7 +33,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: "#1F104A",
     },
   },
-   // TODO: Add your EAS build configuration here
+  // TODO: Add your EAS build configuration here
   // extra: {
   //   eas: {
   //     projectId: "your-eas-project-id",

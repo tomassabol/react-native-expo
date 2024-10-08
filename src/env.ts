@@ -29,7 +29,9 @@ export const env = createEnv({
   /**
    * Destructure all variables from `process.env` to make sure they aren't tree-shaken away.
    */
-  runtimeEnv: process.env,
+  runtimeEnv: {
+    EXPO_PUBLIC_PROJECT_ID: process.env.EXPO_PUBLIC_PROJECT_ID,
+  },
 
   skipValidation:
     !!process.env.CI || process.env.npm_lifecycle_event === "lint",

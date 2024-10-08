@@ -3,13 +3,14 @@ import "../global.css";
 
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useColorScheme } from "nativewind";
-
-import { ReactQueryProvider } from "~/providers/query-provider";
-import { View } from "react-native";
-import { cn } from "~/lib/utils";
 import * as Updates from "expo-updates";
+import { useColorScheme } from "nativewind";
 import { useEffect } from "react";
+import { View } from "react-native";
+
+import { env } from "~/env";
+import { cn } from "~/lib/utils";
+import { Providers } from "~/providers/providers";
 
 // This is the main layout of the app
 // It wraps your pages with the providers they need
@@ -29,19 +30,18 @@ export default function RootLayout({
         await Updates.reloadAsync();
       }
     } catch (error) {
-      // You can also add an alert() to see the error message in case of an error when fetching updates.
       console.error("Failed to fetch the update", error);
     }
   }
 
   useEffect(() => {
-    if (process.env.NODE_ENV !== "development") {
-      onFetchUpdateAsync();
+    if (env.NODE_ENV !== "development") {
+      onFetchUpdateAsync().then(console.log).catch(console.error);
     }
   }, []);
 
   return (
-    <ReactQueryProvider>
+    <Providers>
       {/*
           The Stack component displays the current page.
           It also allows you to configure your screens 
@@ -58,6 +58,6 @@ export default function RootLayout({
       />
       <View className={cn({ dark: colorScheme === "dark" })}>{children}</View>
       <StatusBar />
-    </ReactQueryProvider>
+    </Providers>
   );
 }
