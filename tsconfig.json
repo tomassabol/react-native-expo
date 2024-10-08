@@ -19,12 +19,11 @@
       "nativewind/types",
       "@types/node",
       "@types/react",
-      "@types/react-native",
       "@types/react-dom"
     ],
     "checkJs": false,
     "moduleSuffixes": [".ios", ".android", ".native", ""],
-    "module": "Preserve",
+    "module": "ESNext",
     "moduleResolution": "Bundler",
     "noEmit": true
   },

@@ -1,11 +1,13 @@
 import type { ConfigContext, ExpoConfig } from "expo/config";
+import { getPackageJson } from "expo/config";
+
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: "expo",
-  slug: "expo",
-  scheme: "expo",
-  version: "0.1.0",
+  name: "expo-app",
+  slug: "expo-app",
+  scheme: "expo-app",
+  version: getPackageJson(__dirname).version,
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "automatic",
@@ -16,6 +18,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   updates: {
     fallbackToCacheTimeout: 0,
+    // TODO: Add your update URL here
+    // url: "your-update-url",
   },
   assetBundlePatterns: ["**/*"],
   ios: {
@@ -29,7 +33,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: "#1F104A",
     },
   },
-  // TODO: Add your EAS build configuration here
+   // TODO: Add your EAS build configuration here
   // extra: {
   //   eas: {
   //     projectId: "your-eas-project-id",
@@ -39,5 +43,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  plugins: ["expo-router"],
+  runtimeVersion: {
+    policy: "appVersion",
+  },
+  plugins: ["expo-router", "expo-updates"],
 });
